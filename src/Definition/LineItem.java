@@ -37,6 +37,7 @@ public class LineItem {
 
 
         return quantity * price;
+
     }
 
     @Override
