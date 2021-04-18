@@ -6,7 +6,7 @@ public class LineItem {
     public int quantity;
     public double price;
 
-    public LineItem(String itemName, int quantity, double price){
+    public LineItem(String itemName, int quantity, double price) {
         this.itemName = itemName;
         this.quantity = quantity;
         this.price = price;
@@ -29,13 +29,14 @@ public class LineItem {
     }
 
     public void setPrice(double price) {
+
         this.price = price;
     }
 
-    public double getTotalPrice(){
+    public double getTotalPrice() {
 
 
-     return quantity*price;
+        return quantity * price;
     }
 
     @Override
