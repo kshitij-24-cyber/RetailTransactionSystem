@@ -36,7 +36,7 @@ public class LineItem {
     public double getTotalPrice() {
 
 
-        return quantity * price;
+        return this.getQuantity()*this.getPrice();
 
     }
 

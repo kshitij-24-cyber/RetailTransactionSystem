@@ -3,7 +3,7 @@ package Execution;
 
 import Definition.LineItem;
 
-import javax.xml.namespace.QName;
+
 import java.util.ArrayList;
 
 public class Transaction {
@@ -36,23 +36,54 @@ public class Transaction {
         this.customersName = customersName;
     }
 
-    public Definition.LineItem addLineItem(String itemName, int Quantity, double price){
-        lineItems.add(addLineItem(itemName,Quantity,price));
+    public Definition.LineItem addLineItem(String itemName, int Quantity, double price) {
+        lineItems.add(addLineItem(itemName, Quantity, price));
         return null;
     }
-     public void UpdateItem(String itemname,int Quantity,double price){
-        for (LineItem lineItem : lineItems){
-            if (lineItem.getItemName().equalsIgnoreCase()){
+
+    public void UpdateItem(String itemname, int Quantity, double price) {
+        for (LineItem lineItem : lineItems) {
+            if (lineItem.getItemName().equalsIgnoreCase(itemname)) {
                 lineItem.setPrice(price);
                 lineItem.setQuantity(Quantity);
                 break;
             }
         }
-     }
-     public double getTotalPrice(){
-        return
-     }
+    }
 
+    public double getTotalPrice() {
+        double total = 0;
+        for (LineItem lineItem : lineItems) {
+            total += lineItem.getTotalPrice();
+        }
+        return total;
+    }
+
+    public String searchItem(String item) {
+        String result = item + " not found";
+        for (LineItem purchasedItem : lineItems) {
+            if (purchasedItem.getItemName().equalsIgnoreCase(item)) {
+                return purchasedItem.toString();
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        String result = "Customer ID : " + this.getCustomersID() + '\n' +
+                "Customer Name : " + this.getCustomersName() + '\n' + '\n';
+        for (LineItem purchasedItem : lineItems) {
+            result += purchasedItem.toString();
+        }
+        result += '\n';
+        result += "Transaction Total                          $" + this.getTotalPrice() + '\n';
+
+        return result;
+
+    }
 }
+
+
 
 
