@@ -7,7 +7,7 @@ public class Transaction {
     private String customerName;
     private ArrayList<LineItem> itemBuyed;
 
-    public Transaction(int customerId, String customerName, ArrayList<LineItem> itemBuyed) {
+    public Transaction(int customerId, String customerName) {
         this.customerId = customerId;
         this.customerName = customerName;
         itemBuyed = new ArrayList<>();
